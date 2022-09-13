@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.View
 import com.example.philosophyquotes.databinding.ActivityWelcomeBinding
 
-class Welcome : AppCompatActivity(), View.OnClickListener {
+class WelcomeActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var _binding: ActivityWelcomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {

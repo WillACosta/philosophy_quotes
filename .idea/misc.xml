@@ -3,7 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/ic_heart.xml" value="0.1765" />
+        <entry key="app/src/main/res/drawable/ic_home.xml" value="0.1765" />
+        <entry key="app/src/main/res/drawable/ic_list.xml" value="0.1765" />
         <entry key="app/src/main/res/drawable/ic_logo.xml" value="0.293" />
+        <entry key="app/src/main/res/drawable/ic_quote.xml" value="0.1765" />
+        <entry key="app/src/main/res/drawable/ic_send.xml" value="0.1765" />
+        <entry key="app/src/main/res/layout/activity_home.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.21770833333333334" />
         <entry key="app/src/main/res/layout/activity_name.xml" value="0.37447916666666664" />
         <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.31657608695652173" />

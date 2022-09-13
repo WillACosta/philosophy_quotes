@@ -14,11 +14,10 @@
         android:theme="@style/Theme.PhilosophyQuotes"
         tools:targetApi="31">
         <activity
-            android:name=".ui.Welcome"
+            android:name=".ui.WelcomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -27,7 +26,7 @@
             android:name=".ui.NameActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.HomeActivity"
             android:exported="true" />
     </application>
 

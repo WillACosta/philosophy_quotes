@@ -6,4 +6,7 @@
     <string name="name_question">How can I tell you?</string>
     <string name="your_name_field">Your name</string>
     <string name="continue_button_text">Continue</string>
+    <string name="alt_heart_text">Icon that representing an heart</string>
+    <string name="alt_send_text">Icon that represents an send button</string>
+    <string name="alt_quote_text">Icon that represents an quote</string>
 </resources>

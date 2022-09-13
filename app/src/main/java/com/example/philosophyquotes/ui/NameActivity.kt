@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.example.philosophyquotes.MainActivity
 import com.example.philosophyquotes.databinding.ActivityNameBinding
 
 
@@ -35,6 +34,6 @@ class NameActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun goToMainActivity() {
-        startActivity(Intent(this, MainActivity::class.java))
+        startActivity(Intent(this, HomeActivity::class.java))
     }
 }
