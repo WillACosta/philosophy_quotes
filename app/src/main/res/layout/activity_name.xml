@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".ui.NameActivity">
+
+    <TextView
+        android:layout_marginTop="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/name_question"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/edt_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_marginTop="20dp"
+        android:autofillHints=""
+        android:backgroundTint="@color/primary"
+        android:gravity="center_horizontal"
+        android:hint="@string/your_name_field"
+        android:inputType="text"
+        android:paddingBottom="20dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/gray" />
+
+    <Button
+        android:id="@+id/started_button"
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:text="@string/continue_button_text"
+        android:textSize="15sp"
+        app:strokeColor="@color/primary"
+        app:strokeWidth="2dp" />
+
+</LinearLayout>
