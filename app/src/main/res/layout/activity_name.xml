@@ -7,12 +7,12 @@
     android:background="@color/black"
     android:orientation="vertical"
     android:padding="20dp"
-    tools:context=".ui.NameActivity">
+    tools:context=".view.NameActivity">
 
     <TextView
-        android:layout_marginTop="25dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
         android:gravity="center_horizontal"
         android:text="@string/name_question"
         android:textColor="@color/white"
@@ -35,7 +35,7 @@
 
     <Button
         android:id="@+id/started_button"
-        style="@style/Widget.Material3.Button.OutlinedButton"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"

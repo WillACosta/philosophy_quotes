@@ -1,4 +1,4 @@
-package com.example.philosophyquotes.ui
+package com.example.philosophyquotes.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

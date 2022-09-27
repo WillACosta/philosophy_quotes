@@ -14,7 +14,7 @@
         android:theme="@style/Theme.PhilosophyQuotes"
         tools:targetApi="31">
         <activity
-            android:name=".ui.WelcomeActivity"
+            android:name=".view.WelcomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,10 +23,10 @@
         </activity>
 
         <activity
-            android:name=".ui.NameActivity"
+            android:name=".view.NameActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.HomeActivity"
+            android:name=".view.HomeActivity"
             android:exported="true" />
     </application>
 

@@ -9,4 +9,5 @@
     <string name="alt_heart_text">Icon that representing an heart</string>
     <string name="alt_send_text">Icon that represents an send button</string>
     <string name="alt_quote_text">Icon that represents an quote</string>
+    <string name="alt_logo_text">App Logo with a cube and quote icon in yellow color</string>
 </resources>
