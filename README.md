@@ -1,5 +1,5 @@
 <div align="center" border-radius="100px">
-  <img src="./docs/logo.png" width="100" height="100" />
+  <img src="./docs/logo.png" />
 </div>
 
 ##
