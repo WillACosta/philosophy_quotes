@@ -16,18 +16,26 @@ class WelcomeActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
 
         initView()
-        setContentView(_binding.root)
+        _viewModel = ViewModelProvider(this)[WelcomeViewModel::class.java]
+
         setListeners()
+        setContentView(_binding.root)
     }
 
     override fun onClick(view: View) {
         _viewModel.handleFirstAccess()
+        goToNameActivity()
     }
 
     private fun setListeners() {
         _binding.startedButton.setOnClickListener(this)
-        _viewModel.isFirstAccess.observe(this) {
-            if (it) {
+        _viewModel.userData.observe(this) {
+            if (it.isFirstAccess && it.name.isNotEmpty()) {
+                gotoHomeActivity()
+                finish()
+            }
+
+            if (it.isFirstAccess && it.name.isEmpty()) {
                 goToNameActivity()
                 finish()
             }
@@ -37,10 +45,17 @@ class WelcomeActivity : AppCompatActivity(), View.OnClickListener {
     private fun initView() {
         _binding = ActivityWelcomeBinding.inflate(layoutInflater)
         supportActionBar?.hide()
-        _viewModel = ViewModelProvider(this)[WelcomeViewModel::class.java]
     }
 
     private fun goToNameActivity() {
-        startActivity(Intent(this, NameActivity::class.java))
+        startActivity(NameActivity::class.java)
+    }
+
+    private fun gotoHomeActivity() {
+        startActivity(HomeActivity::class.java)
+    }
+
+    private fun <T> startActivity(className: Class<T>) {
+        startActivity(Intent(this, className))
     }
 }

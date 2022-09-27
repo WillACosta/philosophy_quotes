@@ -16,14 +16,14 @@ class CAppPreferences(context: Context) : AppPreferences {
         }
     }
 
-    override fun <T> getData(key: String, default: T): T? {
+    override fun <T> getData(key: String, default: T): T {
         if (default is Boolean) {
             return preferences.getBoolean(key, default) as T
         } else if (default is String) {
             return preferences.getString(key, default) as T
         }
 
-        return null
+        return default
     }
 
     override fun remove(key: String) {

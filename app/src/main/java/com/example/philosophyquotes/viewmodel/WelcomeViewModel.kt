@@ -7,17 +7,29 @@ import androidx.lifecycle.MutableLiveData
 import com.example.philosophyquotes.constants.AppConstants
 import com.example.philosophyquotes.data.datasource.local.CAppPreferences
 
+class UserData(val isFirstAccess: Boolean, val name: String) {}
+
 class WelcomeViewModel(application: Application) : AndroidViewModel(application) {
     private val appPreferences = CAppPreferences(application.applicationContext)
 
-    private val _isFirstAccess = MutableLiveData<Boolean>()
-    val isFirstAccess: LiveData<Boolean> = _isFirstAccess
+    private val _userData = MutableLiveData<UserData>()
+    val userData: LiveData<UserData> = _userData
 
     init {
-       _isFirstAccess.value = appPreferences.getData(AppConstants.SHARED.IS_FIRST_ACCESS, false)
+        val isFirstAccess = appPreferences.getData(
+            AppConstants.SHARED.IS_FIRST_ACCESS_KEY,
+            false
+        )
+
+        val userName = appPreferences.getData(
+            AppConstants.SHARED.USER_NAME_KEY,
+            ""
+        )
+
+        _userData.value = UserData(isFirstAccess, userName)
     }
 
     fun handleFirstAccess() {
-        appPreferences.storeData<Boolean>(AppConstants.SHARED.IS_FIRST_ACCESS, true)
+        appPreferences.storeData<Boolean>(AppConstants.SHARED.IS_FIRST_ACCESS_KEY, true)
     }
 }
