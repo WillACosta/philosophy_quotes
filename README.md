@@ -1,9 +1,11 @@
-<div style="margin: 0 auto">
-    <img src="./docs/logo.png" />
+<div align="center" border-radius="100px">
+  <img src="./docs/logo.png" width="100" height="100" />
 </div>
 
-Philosophy Quotes is a project to show random quotes every time the user touch on refresh button. In
-this project you'll find:
+##
+
+Philosophy Quotes is a mobile app to show random quotes every time the user touch on refresh button.
+In this project you'll find:
 
 - User Interface built with Constraint Layout
 - MVVM and SOLID concepts
@@ -29,3 +31,7 @@ use `Import Project`.
 <div style="margin: 0 auto">
     <img src="./docs/screen_shot.png" />
 </div>
+
+---
+
+Made with 🖤 by Will
