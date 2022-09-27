@@ -1,4 +1,6 @@
-### Philosophy Quotes
+<div style="margin: 0 auto">
+    <img src="./docs/logo.png" />
+</div>
 
 Philosophy Quotes is a project to show random quotes every time the user touch on refresh button. In
 this project you'll find:
@@ -8,6 +10,7 @@ this project you'll find:
 - Local data store with Shared Preferences
 - Dark and Light Mode
 - HTTP Requests with Retrofit
+- JSON Serialization with Gson
 - Usage of [Stoic Quotes API](https://stoicquotesapi.com/)
 
 ### Opening the project
@@ -20,3 +23,9 @@ git clone https://github.com/WillACosta/philosophy_quotes
 
 To build this project, use the `gradlew build` command or open with Android Studio and
 use `Import Project`.
+
+### Screenshots
+
+<div style="margin: 0 auto">
+    <img src="./docs/screen_shot.png" />
+</div>
