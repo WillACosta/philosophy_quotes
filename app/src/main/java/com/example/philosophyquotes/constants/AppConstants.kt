@@ -13,6 +13,5 @@ class AppConstants private constructor() {
 
     object HTTP {
         const val SUCCESS = 200
-        const val API_ERROR = 400
     }
 }

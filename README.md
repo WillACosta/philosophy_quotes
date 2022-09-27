@@ -8,6 +8,7 @@ this project you'll find:
 - Local data store with Shared Preferences
 - Dark and Light Mode
 - HTTP Requests with Retrofit
+- Usage of [Stoic Quotes API](https://stoicquotesapi.com/)
 
 ### Opening the project
 

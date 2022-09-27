@@ -13,4 +13,7 @@
     <string name="alt_send_text">ícone que representa um botão de enviar</string>
     <string name="alt_quote_text">ícone que representa uma citação</string>
     <string name="alt_logo_text">Logo do aplicativo, representando um cubo e um ícone de citação no canto superior direito, ambas na cor amarelo</string>
+    <string name="quote_description_sample">Quão ridículo e quão estranho, podemos ser surpreendidos com qualquer coisa na vida.</string>
+    <string name="author_sample">- Marcus Aurelius</string>
+    <string name="refresh_button">Atualizar</string>
 </resources>
