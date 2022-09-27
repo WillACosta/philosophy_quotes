@@ -1,4 +1,4 @@
-package com.example.philosophyquotes.data.datasource.local
+package com.example.philosophyquotes.data.repository.local
 
 interface AppPreferences {
     fun <T> storeData(key: String, value: T)

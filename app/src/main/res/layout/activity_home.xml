@@ -33,7 +33,7 @@
             android:id="@+id/quoteDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="How ridiculous and how strange to be surprised at anything which happens in life."
+            android:text="@string/quote_description_sample"
             android:textSize="24sp" />
 
         <TextView
@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_marginTop="15dp"
-            android:text="- Marcus Aurelius" />
+            android:text="@string/author_sample" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -68,12 +68,12 @@
         <Button
             android:id="@+id/refreshQuoteButton"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="100dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="30dp"
             android:width="2dp"
-            android:text="Refresh"
+            android:text="@string/refresh_button"
             android:textColor="@color/black"
             android:textSize="15sp"
             app:strokeColor="@color/black" />

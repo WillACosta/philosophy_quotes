@@ -1,4 +1,4 @@
-package com.example.philosophyquotes.data.datasource.local
+package com.example.philosophyquotes.data.repository.local
 
 import android.content.Context
 import android.content.SharedPreferences

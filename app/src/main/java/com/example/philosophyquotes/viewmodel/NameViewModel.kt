@@ -3,7 +3,7 @@ package com.example.philosophyquotes.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import com.example.philosophyquotes.constants.AppConstants
-import com.example.philosophyquotes.data.datasource.local.CAppPreferences
+import com.example.philosophyquotes.data.repository.local.CAppPreferences
 
 class NameViewModel(application: Application) : AndroidViewModel(application) {
     private val appPreferences = CAppPreferences(application.applicationContext)

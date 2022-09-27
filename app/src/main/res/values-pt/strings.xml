@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="UNEXPECTED_ERROR">Oops! Aconteçeu um erro inesperado. Tente novamente mais tarde!!</string>
+
     <string name="app_name">Citações Filosóficas</string>
     <string name="welcome_title">Encontre uma citação de filosófia a qualquer momento</string>
     <string name="welcome_description">Explore inúmeras citações das maiores e mais brilhantes mentes da Filosofia</string>
@@ -10,4 +12,5 @@
     <string name="alt_heart_text">ícone que representa um coração</string>
     <string name="alt_send_text">ícone que representa um botão de enviar</string>
     <string name="alt_quote_text">ícone que representa uma citação</string>
+    <string name="alt_logo_text">Logo do aplicativo, representando um cubo e um ícone de citação no canto superior direito, ambas na cor amarelo</string>
 </resources>

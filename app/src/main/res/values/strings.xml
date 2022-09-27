@@ -1,7 +1,9 @@
 <resources>
+    <string name="UNEXPECTED_ERROR">Oops! An unexpected error was occurred. Try later!!</string>
+
     <string name="app_name">Philosophy Quotes</string>
     <string name="welcome_title">Find an Philosophy Quote for today</string>
-    <string name="welcome_description">Exlpore awesome quotes of most and relevant brains of all the world with Philosophy</string>
+    <string name="welcome_description">Explore awesome quotes of most and relevant brains of all the world with Philosophy</string>
     <string name="get_started">Get Started</string>
     <string name="name_question">How can I tell you?</string>
     <string name="your_name_field">Your name</string>
@@ -10,4 +12,7 @@
     <string name="alt_send_text">Icon that represents an send button</string>
     <string name="alt_quote_text">Icon that represents an quote</string>
     <string name="alt_logo_text">App Logo with a cube and quote icon in yellow color</string>
+    <string name="quote_description_sample">How ridiculous and how strange to be surprised at anything which happens in life.</string>
+    <string name="author_sample">- Marcus Aurelius</string>
+    <string name="refresh_button">Refresh</string>
 </resources>

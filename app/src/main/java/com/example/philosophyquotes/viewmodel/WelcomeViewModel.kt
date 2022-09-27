@@ -5,7 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.philosophyquotes.constants.AppConstants
-import com.example.philosophyquotes.data.datasource.local.CAppPreferences
+import com.example.philosophyquotes.data.repository.local.CAppPreferences
 
 class UserData(val isFirstAccess: Boolean, val name: String) {}
 
