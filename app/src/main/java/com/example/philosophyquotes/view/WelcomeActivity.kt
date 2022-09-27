@@ -1,11 +1,11 @@
 package com.example.philosophyquotes.view
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.philosophyquotes.databinding.ActivityWelcomeBinding
+import com.example.philosophyquotes.utils.HelperFunctions
 import com.example.philosophyquotes.viewmodel.WelcomeViewModel
 
 class WelcomeActivity : AppCompatActivity(), View.OnClickListener {
@@ -48,14 +48,10 @@ class WelcomeActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun goToNameActivity() {
-        startActivity(NameActivity::class.java)
+        HelperFunctions.startActivity(this, NameActivity::class.java)
     }
 
     private fun gotoHomeActivity() {
-        startActivity(HomeActivity::class.java)
-    }
-
-    private fun <T> startActivity(className: Class<T>) {
-        startActivity(Intent(this, className))
+        HelperFunctions.startActivity(this, HomeActivity::class.java)
     }
 }

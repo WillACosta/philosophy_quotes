@@ -11,9 +11,9 @@
     tools:context=".view.HomeActivity">
 
     <TextView
+        android:id="@+id/text_user_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello, Will!"
         android:textSize="24sp" />
 
     <LinearLayout

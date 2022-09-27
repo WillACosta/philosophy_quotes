@@ -1,12 +1,12 @@
 package com.example.philosophyquotes.view
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.philosophyquotes.databinding.ActivityNameBinding
+import com.example.philosophyquotes.utils.HelperFunctions
 import com.example.philosophyquotes.viewmodel.NameViewModel
 
 
@@ -51,6 +51,6 @@ class NameActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun goToMainActivity() {
-        startActivity(Intent(this, HomeActivity::class.java))
+        HelperFunctions.startActivity(this, HomeActivity::class.java)
     }
 }
