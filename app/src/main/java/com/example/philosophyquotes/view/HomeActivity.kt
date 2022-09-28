@@ -1,10 +1,13 @@
 package com.example.philosophyquotes.view
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.philosophyquotes.databinding.ActivityHomeBinding
 import com.example.philosophyquotes.viewmodel.HomeViewModel
+import com.example.philosophyquotes.viewmodel.state.State
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
@@ -20,25 +23,42 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setListeners() {
-        viewModel.state.observe(this) {
-            val name = it.userName
-            val quote = it.quote
+        viewModel.apply {
+            state.observe(this@HomeActivity, Observer { status ->
+                when (status) {
+                    is State.Loading -> {
+                        binding.shimmerLayout.startShimmer()
+                    }
 
-            if (name?.isNotEmpty() == true) {
-                binding.textUserName.text = buildString {
-                    append("Hello, ")
-                    append(name)
-                    append("!")
-                }
-            }
+                    is State.Success -> {
+                        val name = status.data?.userName
+                        val quote = status.data?.quote
 
-            if (quote != null) {
-                binding.quoteDescription.text = quote.quote
-                binding.quoteAuthor.text = buildString {
-                    append("- ")
-                    append(quote.author)
+                        if (name?.isNotEmpty() == true) {
+                            binding.textUserName.text = buildString {
+                                append("Hello, ")
+                                append(name)
+                                append("!")
+                            }
+                        }
+
+                        if (quote != null) {
+                            binding.quoteDescription.text = quote.quote
+                            binding.quoteAuthor.text = buildString {
+                                append("- ")
+                                append(quote.author)
+                            }
+
+                            binding.shimmerLayout.apply {
+                                stopShimmer()
+                                visibility = View.GONE
+                            }
+                        }
+                    }
+
+                    else -> {}
                 }
-            }
+            })
         }
 
         binding.refreshQuoteButton.setOnClickListener {
