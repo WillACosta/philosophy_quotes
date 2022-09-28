@@ -28,13 +28,16 @@ class HomeActivity : AppCompatActivity() {
                 binding.textUserName.text = buildString {
                     append("Hello, ")
                     append(name)
-                    append(" :)")
+                    append("!")
                 }
             }
 
             if (quote != null) {
                 binding.quoteDescription.text = quote.quote
-                binding.quoteAuthor.text = quote.author
+                binding.quoteAuthor.text = buildString {
+                    append("- ")
+                    append(quote.author)
+                }
             }
         }
 
