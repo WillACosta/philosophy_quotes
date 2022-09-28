@@ -15,4 +15,5 @@
     <string name="quote_description_sample">How ridiculous and how strange to be surprised at anything which happens in life.</string>
     <string name="author_sample">- Marcus Aurelius</string>
     <string name="refresh_button">Refresh</string>
+    <string name="quote_logo_shimmer">Represents quote logo in shimmer effect</string>
 </resources>

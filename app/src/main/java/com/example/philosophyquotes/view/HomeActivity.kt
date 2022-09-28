@@ -53,6 +53,10 @@ class HomeActivity : AppCompatActivity() {
                                 stopShimmer()
                                 visibility = View.GONE
                             }
+
+                            binding.homeContent.apply {
+                                visibility = View.VISIBLE
+                            }
                         }
                     }
 
@@ -70,5 +74,9 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         supportActionBar?.hide()
+
+        binding.homeContent.apply {
+            visibility = View.GONE
+        }
     }
 }
