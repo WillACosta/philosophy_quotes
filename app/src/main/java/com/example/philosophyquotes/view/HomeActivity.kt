@@ -6,8 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.philosophyquotes.databinding.ActivityHomeBinding
+import com.example.philosophyquotes.viewmodel.HomeState
 import com.example.philosophyquotes.viewmodel.HomeViewModel
-import com.example.philosophyquotes.viewmodel.state.State
+import com.example.philosophyquotes.viewmodel.state.UiState
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
@@ -24,40 +25,14 @@ class HomeActivity : AppCompatActivity() {
 
     private fun setListeners() {
         viewModel.apply {
-            state.observe(this@HomeActivity, Observer { status ->
-                when (status) {
-                    is State.Loading -> {
+            uiState.observe(this@HomeActivity, Observer {
+                when (it) {
+                    is UiState.Loading -> {
                         binding.shimmerLayout.startShimmer()
                     }
 
-                    is State.Success -> {
-                        val name = status.data?.userName
-                        val quote = status.data?.quote
-
-                        if (name?.isNotEmpty() == true) {
-                            binding.textUserName.text = buildString {
-                                append("Hello, ")
-                                append(name)
-                                append("!")
-                            }
-                        }
-
-                        if (quote != null) {
-                            binding.quoteDescription.text = quote.quote
-                            binding.quoteAuthor.text = buildString {
-                                append("- ")
-                                append(quote.author)
-                            }
-
-                            binding.shimmerLayout.apply {
-                                stopShimmer()
-                                visibility = View.GONE
-                            }
-
-                            binding.homeContent.apply {
-                                visibility = View.VISIBLE
-                            }
-                        }
+                    is UiState.Success -> {
+                        handleSuccessState(it.data)
                     }
 
                     else -> {}
@@ -77,6 +52,36 @@ class HomeActivity : AppCompatActivity() {
 
         binding.homeContent.apply {
             visibility = View.GONE
+        }
+    }
+
+    private fun handleSuccessState(state: HomeState?) {
+        val name = state?.userName
+        val quote = state?.quote
+
+        if (name?.isNotEmpty() == true) {
+            binding.textUserName.text = buildString {
+                append("Hello, ")
+                append(name)
+                append("!")
+            }
+        }
+
+        if (quote != null) {
+            binding.quoteDescription.text = quote.quote
+            binding.quoteAuthor.text = buildString {
+                append("- ")
+                append(quote.author)
+            }
+
+            binding.shimmerLayout.apply {
+                stopShimmer()
+                visibility = View.GONE
+            }
+
+            binding.homeContent.apply {
+                visibility = View.VISIBLE
+            }
         }
     }
 }

@@ -14,6 +14,7 @@ In this project you'll find:
 - HTTP Requests with Retrofit
 - JSON Serialization with Gson
 - Usage of [Stoic Quotes API](https://stoicquotesapi.com/)
+- Shimmer loading effect
 
 ### Opening the project
 

@@ -9,7 +9,7 @@ import com.example.philosophyquotes.data.listener.ApiListener
 import com.example.philosophyquotes.data.model.Quote
 import com.example.philosophyquotes.data.repository.local.CAppPreferences
 import com.example.philosophyquotes.data.repository.remote.CQuoteRepository
-import com.example.philosophyquotes.viewmodel.state.State
+import com.example.philosophyquotes.viewmodel.state.UiState
 
 data class HomeState(val userName: String?, val quote: Quote?)
 
@@ -18,26 +18,26 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private val appPreferences = CAppPreferences(application.applicationContext)
     private val repository = CQuoteRepository(application.applicationContext)
 
-    private val _homeState = MutableLiveData<State<HomeState>>()
-    val state: LiveData<State<HomeState>> = _homeState
+    private val _homeUiState = MutableLiveData<UiState<HomeState>>()
+    val uiState: LiveData<UiState<HomeState>> = _homeUiState
 
     init {
-        getUserNameFromStorage()
         getRandomQuote()
+        getUserNameFromStorage()
     }
 
     private fun getUserNameFromStorage() {
-        _homeState.value = State.Loading()
+        _homeUiState.value = UiState.Loading()
         val userName = appPreferences.getData<String>(AppConstants.SHARED.USER_NAME_KEY, "")
-        _homeState.value = State.Success(HomeState(userName, null))
+        _homeUiState.value = UiState.Success(HomeState(userName, null))
     }
 
     fun getRandomQuote() {
-        _homeState.value = State.Loading()
+        _homeUiState.value = UiState.Loading()
 
         repository.getRandomQuote(object : ApiListener<Quote> {
             override fun onSuccess(response: Quote) {
-                _homeState.value = State.Success(HomeState(null, response))
+                _homeUiState.value = UiState.Success(HomeState(null, response))
             }
 
             override fun onFailure(error: String) {
