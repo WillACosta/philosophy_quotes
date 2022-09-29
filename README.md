@@ -15,6 +15,7 @@ In this project you'll find:
 - JSON Serialization with Gson
 - Usage of [Stoic Quotes API](https://stoicquotesapi.com/)
 - Shimmer loading effect
+- Custom fonts from Google Fonts
 
 ### Opening the project
 
