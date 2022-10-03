@@ -3,7 +3,6 @@ package com.example.philosophyquotes.view
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.philosophyquotes.databinding.ActivityHomeBinding
 import com.example.philosophyquotes.viewmodel.HomeState
@@ -25,10 +24,12 @@ class HomeActivity : AppCompatActivity() {
 
     private fun setListeners() {
         viewModel.apply {
-            uiState.observe(this@HomeActivity, Observer {
+            uiState.observe(this@HomeActivity) {
                 when (it) {
                     is UiState.Loading -> {
                         binding.shimmerLayout.startShimmer()
+                        handleContentVisibility("content", View.GONE)
+                        handleContentVisibility("shimmer", View.VISIBLE)
                     }
 
                     is UiState.Success -> {
@@ -37,7 +38,7 @@ class HomeActivity : AppCompatActivity() {
 
                     else -> {}
                 }
-            })
+            }
         }
 
         binding.refreshQuoteButton.setOnClickListener {
@@ -50,9 +51,7 @@ class HomeActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         supportActionBar?.hide()
 
-        binding.homeContent.apply {
-            visibility = View.GONE
-        }
+        handleContentVisibility("content", View.GONE)
     }
 
     private fun handleSuccessState(state: HomeState?) {
@@ -74,13 +73,23 @@ class HomeActivity : AppCompatActivity() {
                 append(quote.author)
             }
 
-            binding.shimmerLayout.apply {
-                stopShimmer()
-                visibility = View.GONE
-            }
+            handleContentVisibility("shimmer", View.GONE)
+            handleContentVisibility("content", View.VISIBLE)
+            binding.shimmerLayout.stopShimmer()
+        }
+    }
 
-            binding.homeContent.apply {
-                visibility = View.VISIBLE
+    private fun handleContentVisibility(element: String, id: Int) {
+        when (element) {
+            "content" -> {
+                binding.homeContent.apply {
+                    visibility = id
+                }
+            }
+            "shimmer" -> {
+                binding.shimmerLayout.apply {
+                    visibility = id
+                }
             }
         }
     }
