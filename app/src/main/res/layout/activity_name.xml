@@ -19,21 +19,26 @@
         android:textColor="@color/white"
         android:textSize="20sp" />
 
-    <EditText
-        android:id="@+id/edt_name"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edt_name_container"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:autofillHints=""
-        android:backgroundTint="@color/primary"
-        android:fontFamily="@font/inter"
-        android:gravity="center_horizontal"
-        android:hint="@string/your_name_field"
-        android:inputType="text"
-        android:paddingBottom="20dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/gray" />
+        android:textColorHint="@color/primary"
+        app:boxStrokeColor="@color/primary"
+        app:hintTextColor="@color/primary">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="@string/your_name_field"
+            android:lines="1"
+            android:textColor="@color/primary" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/started_button"

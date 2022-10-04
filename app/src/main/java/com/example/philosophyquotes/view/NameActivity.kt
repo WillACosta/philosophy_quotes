@@ -2,8 +2,8 @@ package com.example.philosophyquotes.view
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.ViewModelProvider
 import com.example.philosophyquotes.databinding.ActivityNameBinding
 import com.example.philosophyquotes.utils.HelperFunctions
@@ -26,16 +26,15 @@ class NameActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(view: View) {
-        handleStoreUserName()
+        submitUserName()
     }
 
-    private fun handleStoreUserName() {
-        val name = _binding.edtName.text.toString()
+    private fun submitUserName() {
+        _binding.edtNameContainer.error = validateName()
+        val validName = _binding.edtNameContainer.error == null
 
-        if (name.isEmpty()) {
-            Toast.makeText(this, "Oops! Your name is invalid", Toast.LENGTH_SHORT).show()
-        } else {
-            _viewModel.storeUserName(name)
+        if (validName) {
+            _viewModel.storeUserName(_binding.edtName.text.toString())
             goToMainActivity()
             finish()
         }
@@ -43,6 +42,30 @@ class NameActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun setListeners() {
         _binding.startedButton.setOnClickListener(this)
+
+        _binding.edtName.setOnFocusChangeListener { _, focused ->
+            if (!focused) {
+                _binding.edtNameContainer.error = validateName()
+            }
+        }
+
+        _binding.edtName.doOnTextChanged { _, _, _, _ ->
+            _binding.edtNameContainer.error = validateName()
+        }
+    }
+
+    private fun validateName(): String? {
+        val name = _binding.edtName.text.toString()
+
+        if (name.isEmpty()) {
+            return "Oops! Your name is invalid"
+        }
+
+        if (name.length < 4) {
+            return "Oops! Your name should not be less than 3 characters"
+        }
+
+        return null
     }
 
     private fun initView() {
