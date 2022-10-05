@@ -93,18 +93,27 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/quoteAuthor">
 
-            <ImageView
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/button_favorite"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
+                android:backgroundTint="@color/primary"
                 android:contentDescription="@string/alt_heart_text"
-                android:src="@drawable/ic_heart" />
+                android:src="@drawable/ic_heart"
+                app:borderWidth="0dp"
+                app:elevation="0dp"
+                app:fabSize="mini" />
 
-            <ImageView
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/button_send"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/primary"
                 android:contentDescription="@string/alt_send_text"
-                android:src="@drawable/ic_send" />
+                android:src="@drawable/ic_send"
+                app:borderWidth="0dp"
+                app:elevation="0dp"
+                app:fabSize="mini" />
 
         </LinearLayout>
 

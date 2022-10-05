@@ -1,13 +1,16 @@
 package com.example.philosophyquotes.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.example.philosophyquotes.BuildConfig
 import com.example.philosophyquotes.databinding.ActivityHomeBinding
 import com.example.philosophyquotes.viewmodel.HomeState
 import com.example.philosophyquotes.viewmodel.HomeViewModel
 import com.example.philosophyquotes.viewmodel.state.UiState
+
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
@@ -44,6 +47,21 @@ class HomeActivity : AppCompatActivity() {
         binding.refreshQuoteButton.setOnClickListener {
             viewModel.getRandomQuote()
         }
+
+        binding.buttonSend.setOnClickListener {
+            val sendIntent = Intent().apply {
+                action = Intent.ACTION_SEND
+                putExtra(
+                    Intent.EXTRA_TEXT,
+                    "Hey check out an awesome philosophy quote at: https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID
+                )
+                type = "text/plain"
+            }
+
+            val shareIntent = Intent.createChooser(sendIntent, null)
+            startActivity(shareIntent)
+        }
+
     }
 
     private fun initView() {
