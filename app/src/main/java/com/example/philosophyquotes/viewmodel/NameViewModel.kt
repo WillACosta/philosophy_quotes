@@ -23,7 +23,7 @@ class NameViewModel(application: Application) : AndroidViewModel(application) {
 
     fun submitName() {
         if (_error.value == null) {
-            appPreferences.storeData(AppConstants.SHARED.USER_NAME_KEY, name)
+            appPreferences.storeData(AppConstants.SHARED.USER_NAME_KEY, _name.value!!)
         }
     }
 
