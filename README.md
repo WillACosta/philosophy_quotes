@@ -16,6 +16,7 @@ In this project you'll find:
 - Usage of [Stoic Quotes API](https://stoicquotesapi.com/)
 - Shimmer loading effect
 - Custom fonts from Google Fonts
+- Share quote as a image preview
 
 ### Opening the project
 
