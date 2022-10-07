@@ -137,4 +137,5 @@
             app:strokeColor="@color/black" />
 
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

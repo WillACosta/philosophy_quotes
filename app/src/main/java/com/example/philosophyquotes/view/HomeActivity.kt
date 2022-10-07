@@ -23,7 +23,6 @@ class HomeActivity : AppCompatActivity() {
 
         initView()
         setListeners()
-
         setContentView(binding.root)
     }
 

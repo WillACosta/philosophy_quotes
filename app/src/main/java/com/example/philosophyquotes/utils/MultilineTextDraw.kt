@@ -40,10 +40,10 @@ abstract class MultilineTextDraw {
                 setShadowLayer(1f, 0f, 1f, Color.WHITE)
             }
 
-            val textWidth = canvas.width - (16 * scale).toInt()
+            val textContainerWidth = canvas.width - 350f.toInt()
 
             val staticTextLayout =
-                StaticLayout.Builder.obtain(text, 0, text.length, textPaint, textWidth)
+                StaticLayout.Builder.obtain(text, 0, text.length, textPaint, textContainerWidth)
                     .setAlignment(Layout.Alignment.ALIGN_NORMAL)
                     .setLineSpacing(0.0f, 1.0f)
                     .setIncludePad(false)
@@ -51,7 +51,7 @@ abstract class MultilineTextDraw {
 
             val textHeight = staticTextLayout.height
 
-            val x = ((bitmap.width - textWidth) / 2).toFloat()
+            val x = 200f
             val y = ((bitmap.height - textHeight) / 2).toFloat()
 
             canvas.save()
