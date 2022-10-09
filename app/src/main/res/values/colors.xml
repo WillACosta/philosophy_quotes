@@ -3,7 +3,7 @@
     <color name="primary">#FFFAFD86</color>
     <color name="black">#FF111111</color>
     <color name="white">#FFEDEDED</color>
-    <color name="gray">#FF646464</color>
+    <color name="gray">#FFA4A4A4</color>
     <color name="shimmer_tile">#FF646464</color>
     <color name="mtrl_textinput_default_box_stroke_color">#FFFAFD86</color>
 </resources>

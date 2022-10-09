@@ -1,42 +1,43 @@
-package com.example.philosophyquotes.view
+package com.example.philosophyquotes.view.fragments
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.philosophyquotes.databinding.ActivityHomeBinding
+import com.example.philosophyquotes.databinding.FragmentHomeBinding
 import com.example.philosophyquotes.utils.HelperFunctions
 import com.example.philosophyquotes.utils.ShareContentType
 import com.example.philosophyquotes.viewmodel.HomeState
 import com.example.philosophyquotes.viewmodel.HomeViewModel
 import com.example.philosophyquotes.viewmodel.state.UiState
 
+class HomeFragment : Fragment() {
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
 
-class HomeActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityHomeBinding
     private lateinit var viewModel: HomeViewModel
 
     private var quoteToSend = ""
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        initView()
-        setListeners()
-        setContentView(binding.root)
-    }
-
-    private fun initView() {
-        binding = ActivityHomeBinding.inflate(layoutInflater)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
-        supportActionBar?.hide()
 
         handleContentVisibility("content", View.GONE)
+        setListeners()
+
+        return binding.root
     }
 
     private fun setListeners() {
         viewModel.apply {
-            uiState.observe(this@HomeActivity) {
+            uiState.observe(viewLifecycleOwner) {
                 when (it) {
                     is UiState.Loading -> {
                         binding.shimmerLayout.startShimmer()
@@ -48,7 +49,7 @@ class HomeActivity : AppCompatActivity() {
                         handleSuccessState(it.data)
                     }
 
-                    else -> {}
+                    is UiState.Error -> {}
                 }
             }
         }
@@ -58,7 +59,9 @@ class HomeActivity : AppCompatActivity() {
         }
 
         binding.buttonSend.setOnClickListener {
-            HelperFunctions.shareContent(this, ShareContentType.Image, quoteToSend)
+            if (context != null) {
+                HelperFunctions.shareContent(requireContext(), ShareContentType.Image, quoteToSend)
+            }
         }
     }
 

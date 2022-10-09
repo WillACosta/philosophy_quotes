@@ -16,4 +16,6 @@
     <string name="author_sample">- Marcus Aurelius</string>
     <string name="refresh_button">Refresh</string>
     <string name="quote_logo_shimmer">Represents quote logo in shimmer effect</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

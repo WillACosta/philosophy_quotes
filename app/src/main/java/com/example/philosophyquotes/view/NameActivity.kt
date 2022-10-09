@@ -54,6 +54,6 @@ class NameActivity : AppCompatActivity() {
     }
 
     private fun goToMainActivity() {
-        HelperFunctions.startActivity(this, HomeActivity::class.java)
+        HelperFunctions.startActivity(this, ContainerActivity::class.java)
     }
 }

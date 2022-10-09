@@ -40,7 +40,7 @@
             android:name=".view.NameActivity"
             android:exported="false" />
         <activity
-            android:name=".view.HomeActivity"
+            android:name=".view.ContainerActivity"
             android:exported="true" />
     </application>
 

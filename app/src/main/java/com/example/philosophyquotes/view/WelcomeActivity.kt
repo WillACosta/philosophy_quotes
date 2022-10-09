@@ -52,6 +52,6 @@ class WelcomeActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun gotoHomeActivity() {
-        HelperFunctions.startActivity(this, HomeActivity::class.java)
+        HelperFunctions.startActivity(this, ContainerActivity::class.java)
     }
 }

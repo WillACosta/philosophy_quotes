@@ -17,6 +17,7 @@ In this project you'll find:
 - Shimmer loading effect
 - Custom fonts from Google Fonts
 - Share quote as a image preview
+- Bottom navigation view with fragments
 
 ### Opening the project
 
