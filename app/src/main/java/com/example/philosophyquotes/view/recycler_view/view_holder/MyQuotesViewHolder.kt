@@ -2,6 +2,7 @@ package com.example.philosophyquotes.view.recycler_view.view_holder
 
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
+import com.example.philosophyquotes.R
 import com.example.philosophyquotes.data.model.Quote
 import com.example.philosophyquotes.databinding.QuoteListTileBinding
 import com.example.philosophyquotes.view.recycler_view.listeners.OnQuoteListener
@@ -19,7 +20,7 @@ class MyQuotesViewHolder(
         }
 
         bind.buttonDelete.setOnClickListener {
-            AlertDialog.Builder(itemView.context)
+            AlertDialog.Builder(itemView.context, R.style.AlertDialogTheme)
                 .setTitle("Delete quote")
                 .setMessage("Are you sure to delete this quote?\nYou can't undo this action.")
                 .setPositiveButton("Delete") { _, _ -> listener.onDelete(quote.id) }

@@ -48,6 +48,17 @@ class MyQuotesFragment : Fragment() {
     private fun setListeners() {
         viewModel.quotes.observe(viewLifecycleOwner) {
             quotesAdapter.updateQuotes(it)
+            checkIfHasAnyData(it)
+        }
+    }
+
+    private fun checkIfHasAnyData(data: List<Quote>) {
+        if (data.isEmpty()) {
+            binding.emptyContent.visibility = View.VISIBLE
+            binding.recyclerQuotes.visibility = View.GONE
+        } else {
+            binding.emptyContent.visibility = View.GONE
+            binding.recyclerQuotes.visibility = View.VISIBLE
         }
     }
 
@@ -68,6 +79,7 @@ class MyQuotesFragment : Fragment() {
 
             override fun onDelete(id: Int) {
                 viewModel.deleteById(id)
+                viewModel.getQuotes()
             }
         }
 
