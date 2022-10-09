@@ -46,6 +46,7 @@ class MyQuotesFragment : Fragment() {
 
     private fun configureRecyclerView() {
         binding.recyclerQuotes.layoutManager = LinearLayoutManager(context)
+        binding.recyclerQuotes.setHasFixedSize(true)
         binding.recyclerQuotes.adapter = quotesAdapter
 
         val listener = object : OnQuoteListener {

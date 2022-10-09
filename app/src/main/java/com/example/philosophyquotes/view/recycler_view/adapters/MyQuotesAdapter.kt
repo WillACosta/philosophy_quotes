@@ -21,9 +21,7 @@ class MyQuotesAdapter : RecyclerView.Adapter<MyQuotesViewHolder>() {
         holder.bind(quotesList[position])
     }
 
-    override fun getItemCount(): Int {
-        return quotesList.count()
-    }
+    override fun getItemCount(): Int = quotesList.size
 
     fun updateQuotes(quotes: List<Quote>) {
         quotesList = quotes
