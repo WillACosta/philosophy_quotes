@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.philosophyquotes.R
 import com.example.philosophyquotes.data.model.Quote
 import com.example.philosophyquotes.databinding.FragmentHomeBinding
 import com.example.philosophyquotes.utils.HelperFunctions
@@ -67,6 +68,8 @@ class HomeFragment : Fragment() {
             if (this.quote != null) {
                 myQuotesViewModel.save(quote!!)
             }
+
+            binding.buttonFavorite.setImageResource(R.drawable.ic_fill_heart)
         }
 
         binding.buttonSend.setOnClickListener {
@@ -98,9 +101,21 @@ class HomeFragment : Fragment() {
                 append(quote.author)
             }
 
+            verifyIfQuoteHasAlreadyStored(quote.id)
+
             handleContentVisibility("shimmer", View.GONE)
             handleContentVisibility("content", View.VISIBLE)
             binding.shimmerLayout.stopShimmer()
+        }
+    }
+
+    private fun verifyIfQuoteHasAlreadyStored(id: Int) {
+        val storedQuote = myQuotesViewModel.getQuoteByID(id)
+
+        if (storedQuote != null) {
+            binding.buttonFavorite.setImageResource(R.drawable.ic_fill_heart)
+        } else {
+            binding.buttonFavorite.setImageResource(R.drawable.ic_heart)
         }
     }
 

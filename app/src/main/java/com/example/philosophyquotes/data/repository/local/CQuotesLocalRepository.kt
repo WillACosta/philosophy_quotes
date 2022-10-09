@@ -12,11 +12,14 @@ class CQuotesLocalRepository(context: Context) : QuotesLocalRepository {
     }
 
     override fun delete(id: Int) {
-        val quoteToDelete = dataSource.getByID(id)
-        dataSource.delete(quoteToDelete)
+        dataSource.delete(id)
     }
 
     override fun getAll(): List<Quote> {
         return dataSource.getAll()
+    }
+
+    override fun getQuoteByID(id: Int): Quote? {
+        return dataSource.getByID(id)
     }
 }

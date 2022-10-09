@@ -22,6 +22,16 @@ class MyQuotesViewModel(application: Application) : AndroidViewModel(application
     }
 
     fun save(quote: Quote) {
-        repository.save(quote)
+        val storedQuote = getQuoteByID(quote.id)
+
+        if (storedQuote != null && storedQuote.id == quote.id) {
+            deleteById(quote.id)
+        } else {
+            repository.save(quote)
+        }
+    }
+
+    fun getQuoteByID(id: Int): Quote? {
+        return repository.getQuoteByID(id)
     }
 }

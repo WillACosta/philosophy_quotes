@@ -6,4 +6,5 @@ interface QuotesLocalRepository {
     fun save(quote: Quote): Boolean
     fun delete(id: Int)
     fun getAll(): List<Quote>
+    fun getQuoteByID(id: Int): Quote?
 }

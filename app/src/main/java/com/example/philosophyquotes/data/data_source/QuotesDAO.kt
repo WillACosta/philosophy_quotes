@@ -12,12 +12,12 @@ interface QuotesDAO {
     @Insert
     fun save(quote: Quote): Long
 
-    @Delete
-    fun delete(quote: Quote)
+    @Query("DELETE from QUOTE WHERE id = :id")
+    fun delete(id: Int)
 
     @Query("SELECT * FROM QUOTE")
     fun getAll(): List<Quote>
 
     @Query("SELECT * FROM QUOTE WHERE id = :id")
-    fun getByID(id: Int): Quote
+    fun getByID(id: Int): Quote?
 }
