@@ -1,16 +1,23 @@
 package com.example.philosophyquotes.view.fragments
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context.CLIPBOARD_SERVICE
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.philosophyquotes.data.model.Quote
 import com.example.philosophyquotes.databinding.FragmentMyQuotesBinding
 import com.example.philosophyquotes.view.recycler_view.adapters.MyQuotesAdapter
 import com.example.philosophyquotes.view.recycler_view.listeners.OnQuoteListener
 import com.example.philosophyquotes.viewmodel.MyQuotesViewModel
+
 
 class MyQuotesFragment : Fragment() {
     private var _binding: FragmentMyQuotesBinding? = null
@@ -50,12 +57,17 @@ class MyQuotesFragment : Fragment() {
         binding.recyclerQuotes.adapter = quotesAdapter
 
         val listener = object : OnQuoteListener {
-            override fun onTouch(id: Int) {
-                TODO("Not yet implemented")
+            override fun onTouch(quote: Quote) {
+                (requireActivity().getSystemService(CLIPBOARD_SERVICE) as ClipboardManager).apply {
+                    setPrimaryClip(ClipData.newPlainText("quote", quote.quote))
+                }
+
+                if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.S_V2)
+                    Toast.makeText(requireActivity(), "Copied", Toast.LENGTH_SHORT).show()
             }
 
             override fun onDelete(id: Int) {
-                TODO("Not yet implemented")
+                viewModel.deleteById(id)
             }
         }
 

@@ -15,7 +15,7 @@ class MyQuotesViewHolder(
         bind.quoteAuthor.text = quote.author
 
         bind.itemContainer.setOnClickListener {
-            listener.onTouch(quote.id)
+            listener.onTouch(quote)
         }
 
         bind.buttonDelete.setOnClickListener {
