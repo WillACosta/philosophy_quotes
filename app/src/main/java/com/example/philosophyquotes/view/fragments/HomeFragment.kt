@@ -67,9 +67,10 @@ class HomeFragment : Fragment() {
         binding.buttonFavorite.setOnClickListener {
             if (this.quote != null) {
                 myQuotesViewModel.save(quote!!)
+                binding.buttonFavorite.setImageResource(R.drawable.ic_fill_heart)
+            } else {
+                binding.buttonFavorite.setImageResource(R.drawable.ic_heart)
             }
-
-            binding.buttonFavorite.setImageResource(R.drawable.ic_fill_heart)
         }
 
         binding.buttonSend.setOnClickListener {
