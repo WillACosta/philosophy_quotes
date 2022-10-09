@@ -14,4 +14,8 @@ class AppConstants private constructor() {
     object HTTP {
         const val SUCCESS = 200
     }
+
+    object DATA_SOURCE {
+        const val TABLE_NAME = "QUOTE"
+    }
 }

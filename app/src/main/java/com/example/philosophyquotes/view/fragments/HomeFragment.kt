@@ -6,11 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.philosophyquotes.data.model.Quote
 import com.example.philosophyquotes.databinding.FragmentHomeBinding
 import com.example.philosophyquotes.utils.HelperFunctions
 import com.example.philosophyquotes.utils.ShareContentType
 import com.example.philosophyquotes.viewmodel.HomeState
 import com.example.philosophyquotes.viewmodel.HomeViewModel
+import com.example.philosophyquotes.viewmodel.MyQuotesViewModel
 import com.example.philosophyquotes.viewmodel.state.UiState
 
 class HomeFragment : Fragment() {
@@ -18,8 +20,10 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var viewModel: HomeViewModel
+    private lateinit var myQuotesViewModel: MyQuotesViewModel
 
     private var quoteToSend = ""
+    private var quote: Quote? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,6 +32,7 @@ class HomeFragment : Fragment() {
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
+        myQuotesViewModel = ViewModelProvider(this)[MyQuotesViewModel::class.java]
 
         handleContentVisibility("content", View.GONE)
         setListeners()
@@ -58,6 +63,12 @@ class HomeFragment : Fragment() {
             viewModel.getRandomQuote()
         }
 
+        binding.buttonFavorite.setOnClickListener {
+            if (this.quote != null) {
+                myQuotesViewModel.save(quote!!)
+            }
+        }
+
         binding.buttonSend.setOnClickListener {
             if (context != null) {
                 HelperFunctions.shareContent(requireContext(), ShareContentType.Image, quoteToSend)
@@ -70,6 +81,7 @@ class HomeFragment : Fragment() {
         val quote = state?.quote
 
         quoteToSend = quote?.quote ?: ""
+        this.quote = quote
 
         if (name?.isNotEmpty() == true) {
             binding.textUserName.text = buildString {

@@ -18,6 +18,7 @@ In this project you'll find:
 - Custom fonts from Google Fonts
 - Share quote as a image preview
 - Bottom navigation view with fragments
+- Save favorites quotes in local database with ROOM
 
 ### Opening the project
 
