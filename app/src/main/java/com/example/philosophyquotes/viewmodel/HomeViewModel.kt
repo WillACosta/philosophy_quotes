@@ -41,7 +41,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
             }
 
             override fun onFailure(error: String) {
-                TODO("Not yet implemented")
+
             }
         })
     }

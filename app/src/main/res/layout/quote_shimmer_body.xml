@@ -21,7 +21,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:background="@color/shimmer_tile"
-        android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/second_text"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +32,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:background="@color/shimmer_tile"
-        android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/third_text"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,7 +43,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:background="@color/shimmer_tile"
-        android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/second_text" />
@@ -56,7 +53,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:background="@color/shimmer_tile"
-        android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/third_text" />
@@ -67,7 +63,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:background="@color/shimmer_tile"
-        android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fourth_text"
@@ -84,7 +79,6 @@
             android:layout_width="22dp"
             android:layout_height="22dp"
             android:background="@color/shimmer_tile"
-            android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fourth_text" />
@@ -93,9 +87,7 @@
             android:layout_width="22dp"
             android:layout_height="22dp"
             android:layout_marginStart="15dp"
-
             android:background="@color/shimmer_tile"
-            android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fourth_text" />

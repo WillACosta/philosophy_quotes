@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="UNEXPECTED_ERROR">Oops! Aconteçeu um erro inesperado. Tente novamente mais tarde!!</string>
-
     <string name="app_name">Citações Filosóficas</string>
     <string name="welcome_title">Encontre uma citação de filosófia a qualquer momento</string>
     <string name="welcome_description">Explore inúmeras citações das maiores e mais brilhantes mentes da Filosofia</string>
@@ -16,4 +15,8 @@
     <string name="quote_description_sample">Quão ridículo e quão estranho, podemos ser surpreendidos com qualquer coisa na vida.</string>
     <string name="author_sample">- Marcus Aurelius</string>
     <string name="refresh_button">Atualizar</string>
+    <string name="quote_logo_shimmer">Representação do esqueleto de carregamento</string>
+    <string name="your_quotes">Suas citações</string>
+    <string name="no_quotes">Nada por aqui</string>
+    <string name="empty_quote_list_text">Salve uma citação e você poderá vê-lá aqui.</string>
 </resources>

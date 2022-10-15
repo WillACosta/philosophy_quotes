@@ -6,18 +6,18 @@
     android:layout_height="match_parent"
     android:background="@color/black"
     android:orientation="vertical"
-    android:padding="20dp"
+    android:padding="@dimen/base_screen_padding"
     tools:context=".view.NameActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="@dimen/margin_xl"
         android:fontFamily="@font/inter"
         android:gravity="center_horizontal"
         android:text="@string/name_question"
         android:textColor="@color/white"
-        android:textSize="20sp" />
+        android:textSize="@dimen/font_size_lg" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/edt_name_container"
@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/margin_lg"
         android:textColorHint="@color/primary"
         app:boxStrokeColor="@color/primary"
         app:hintTextColor="@color/primary">
@@ -46,14 +46,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/margin_lg"
         android:enabled="false"
         android:fontFamily="@font/inter"
         android:text="@string/continue_button_text"
         android:textColor="@color/color_state_material_button"
         android:textSize="12sp"
-        app:cornerRadius="15dp"
+        app:cornerRadius="@dimen/border_radius"
         app:strokeColor="@color/color_state_material_button"
-        app:strokeWidth="2dp" />
+        app:strokeWidth="@dimen/stroke_width" />
 
 </LinearLayout>
