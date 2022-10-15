@@ -8,9 +8,10 @@ Philosophy Quotes is a mobile app to show random quotes every time the user touc
 In this project you'll find:
 
 - User Interface built with Constraint Layout
-- MVVM and SOLID concepts
-- Local data store with Shared Preferences
-- Dark and Light Mode
+- Clean - MVVM and SOLID concepts
+- User preferences data store with Shared Preferences
+- Save favorites quotes in local database with ROOM
+- Dependency Injection with Koin
 - HTTP Requests with Retrofit
 - JSON Serialization with Gson
 - Usage of [Stoic Quotes API](https://stoicquotesapi.com/)
@@ -18,7 +19,6 @@ In this project you'll find:
 - Custom fonts from Google Fonts
 - Share quote as a image preview
 - Bottom navigation view with fragments
-- Save favorites quotes in local database with ROOM
 
 ### Opening the project
 
