@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.philosophyquotes.constants.AppConstants
+import com.example.philosophyquotes.core.constants.AppConstants
 import com.example.philosophyquotes.data.model.Quote
 
 @Database(entities = [Quote::class], version = 1)

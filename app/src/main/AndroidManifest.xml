@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -28,7 +29,7 @@
         </provider>
 
         <activity
-            android:name=".view.WelcomeActivity"
+            android:name=".presentation.WelcomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,10 +38,10 @@
         </activity>
 
         <activity
-            android:name=".view.NameActivity"
+            android:name=".presentation.NameActivity"
             android:exported="false" />
         <activity
-            android:name=".view.ContainerActivity"
+            android:name=".presentation.ContainerActivity"
             android:exported="true" />
     </application>
 

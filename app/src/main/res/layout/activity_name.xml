@@ -7,7 +7,7 @@
     android:background="@color/black"
     android:orientation="vertical"
     android:padding="@dimen/base_screen_padding"
-    tools:context=".view.NameActivity">
+    tools:context=".presentation.NameActivity">
 
     <TextView
         android:layout_width="match_parent"

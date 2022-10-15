@@ -3,7 +3,7 @@ package com.example.philosophyquotes.data.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.philosophyquotes.constants.AppConstants
+import com.example.philosophyquotes.core.constants.AppConstants
 import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = AppConstants.DATA_SOURCE.TABLE_NAME)

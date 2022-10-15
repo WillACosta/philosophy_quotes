@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/primary"
     android:padding="@dimen/base_screen_padding"
-    tools:context=".view.ContainerActivity">
+    tools:context=".presentation.ContainerActivity">
 
     <TextView
         android:id="@+id/text_user_name"
