@@ -6,55 +6,73 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.philosophyquotes.R
+import com.example.philosophyquotes.core.state.UiState
 import com.example.philosophyquotes.core.utils.HelperFunctions
 import com.example.philosophyquotes.core.utils.ShareContentType
 import com.example.philosophyquotes.data.model.Quote
 import com.example.philosophyquotes.databinding.FragmentHomeBinding
-import com.example.philosophyquotes.presentation.viewmodel.HomeState
 import com.example.philosophyquotes.presentation.viewmodel.HomeViewModel
 import com.example.philosophyquotes.presentation.viewmodel.MyQuotesViewModel
-import com.example.philosophyquotes.presentation.viewmodel.state.UiState
+import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
-    private var _binding: FragmentHomeBinding? = null
-    private val binding get() = _binding!!
+    private val binding: FragmentHomeBinding by lazy {
+        FragmentHomeBinding.inflate(layoutInflater)
+    }
 
     private val viewModel: HomeViewModel by viewModel()
     private val myQuotesViewModel: MyQuotesViewModel by viewModel()
-
-    private var quoteToSend = ""
-    private var quote: Quote? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        handleContentVisibility("content", View.GONE)
+        initViewBinding()
         setListeners()
 
         return binding.root
     }
 
+    private fun initViewBinding() {
+        binding.viewmodel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+    }
+
     private fun setListeners() {
         viewModel.apply {
-            uiState.observe(viewLifecycleOwner) {
-                when (it) {
-                    is UiState.Loading -> {
+            uiState.observe(viewLifecycleOwner) { state ->
+                when (state) {
+                    UiState.Loading -> {
+                        viewModel.showLoading()
                         binding.shimmerLayout.startShimmer()
-                        handleContentVisibility("content", View.GONE)
-                        handleContentVisibility("shimmer", View.VISIBLE)
                     }
 
                     is UiState.Success -> {
-                        handleSuccessState(it.data)
+                        viewModel.hideLoading()
+                        handleSuccessState(state.data)
+                        binding.shimmerLayout.stopShimmer()
                     }
 
-                    is UiState.Error -> {}
+                    is UiState.Error -> {
+                        viewModel.hideLoading()
+                        binding.shimmerLayout.stopShimmer()
+                    }
                 }
+            }
+        }
+
+        viewModel.snackBar.observe(viewLifecycleOwner) {
+            it?.let { error ->
+                Snackbar.make(
+                    binding.root,
+                    error,
+                    Snackbar.LENGTH_LONG
+                ).show()
+
+                viewModel.onSnackBarShown()
             }
         }
 
@@ -63,73 +81,46 @@ class HomeFragment : Fragment() {
         }
 
         binding.buttonFavorite.setOnClickListener {
-            if (this.quote != null) {
-                myQuotesViewModel.save(quote!!)
-                binding.buttonFavorite.setImageResource(R.drawable.ic_fill_heart)
-            } else {
-                binding.buttonFavorite.setImageResource(R.drawable.ic_heart)
+            val condition = viewModel.quote != null
+
+            if (condition) {
+                myQuotesViewModel.save(viewModel.quote!!)
             }
+
+            handleFavoriteButton(condition)
         }
 
         binding.buttonSend.setOnClickListener {
-            if (context != null) {
-                HelperFunctions.shareContent(requireContext(), ShareContentType.Image, quoteToSend)
+            val quote = viewModel.quote
+
+            if (context != null && quote != null) {
+                HelperFunctions.shareContent(
+                    requireContext(),
+                    ShareContentType.Image,
+                    quote.quote
+                )
             }
         }
     }
 
-    private fun handleSuccessState(state: HomeState?) {
-        val name = state?.userName
-        val quote = state?.quote
+    private fun handleSuccessState(quote: Quote) {
+        binding.quoteDescription.text = quote.quote
+        binding.quoteAuthor.text = quote.authorName
 
-        quoteToSend = quote?.quote ?: ""
-        this.quote = quote
-
-        if (name?.isNotEmpty() == true) {
-            binding.textUserName.text = buildString {
-                append("Hello, ")
-                append(name)
-                append("!")
-            }
-        }
-
-        if (quote != null) {
-            binding.quoteDescription.text = quote.quote
-            binding.quoteAuthor.text = buildString {
-                append("- ")
-                append(quote.author)
-            }
-
-            verifyIfQuoteHasAlreadyStored(quote.id)
-
-            handleContentVisibility("shimmer", View.GONE)
-            handleContentVisibility("content", View.VISIBLE)
-            binding.shimmerLayout.stopShimmer()
-        }
+        verifyIfQuoteIsAlreadyStored(quote.id)
     }
 
-    private fun verifyIfQuoteHasAlreadyStored(id: Int) {
+    private fun verifyIfQuoteIsAlreadyStored(id: Int) {
         val storedQuote = myQuotesViewModel.getQuoteByID(id)
+        handleFavoriteButton(storedQuote != null)
+    }
 
-        if (storedQuote != null) {
+    private fun handleFavoriteButton(hasLiked: Boolean) {
+        if (hasLiked) {
             binding.buttonFavorite.setImageResource(R.drawable.ic_fill_heart)
         } else {
             binding.buttonFavorite.setImageResource(R.drawable.ic_heart)
         }
     }
 
-    private fun handleContentVisibility(element: String, id: Int) {
-        when (element) {
-            "content" -> {
-                binding.homeContent.apply {
-                    visibility = id
-                }
-            }
-            "shimmer" -> {
-                binding.shimmerLayout.apply {
-                    visibility = id
-                }
-            }
-        }
-    }
 }

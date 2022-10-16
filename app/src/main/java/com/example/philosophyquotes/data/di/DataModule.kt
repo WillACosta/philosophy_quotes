@@ -50,22 +50,12 @@ object DataModule {
 
     private fun networkModule(): Module {
         return module {
-            single<QuoteService> { createService(get(), get()) }
+            single { createService<QuoteService>(get(), get()) }
 
             // create a instance for any JSON converter type | dependency inversion
             single { GsonConverterFactory.create() }
 
-            single {
-                val interceptor = HttpLoggingInterceptor {
-                    Log.e(AppConstants.LOG.OK_HTTP, it)
-                }
-
-                interceptor.level = HttpLoggingInterceptor.Level.BODY
-
-                OkHttpClient.Builder()
-                    .addInterceptor(interceptor)
-                    .build()
-            }
+            single { createHtppClient() }
         }
     }
 
@@ -80,6 +70,18 @@ object DataModule {
             .client(client)
             .build()
             .create(T::class.java)
+    }
+
+    private fun createHtppClient(): OkHttpClient {
+        val interceptor = HttpLoggingInterceptor {
+            Log.e(AppConstants.LOG.OK_HTTP, it)
+        }
+
+        interceptor.level = HttpLoggingInterceptor.Level.BODY
+
+        return OkHttpClient.Builder()
+            .addInterceptor(interceptor)
+            .build()
     }
 
 }

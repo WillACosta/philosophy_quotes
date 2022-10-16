@@ -2,37 +2,31 @@ package com.example.philosophyquotes.data.repository.remote.quote_remote_reposit
 
 import android.content.Context
 import com.example.philosophyquotes.R
-import com.example.philosophyquotes.core.constants.AppConstants
-import com.example.philosophyquotes.data.listener.ApiListener
+import com.example.philosophyquotes.core.exceptions.RemoteException
 import com.example.philosophyquotes.data.model.Quote
 import com.example.philosophyquotes.data.service.QuoteService
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import retrofit2.HttpException
 
 class CQuoteRemoteRepository(
-    private val context: Context,
+    context: Context,
     private val service: QuoteService
 ) : QuoteRemoteRepository {
 
-    override fun getRandomQuote(listener: ApiListener<Quote>) {
-        service.getRandomQuote().enqueue(object : Callback<Quote> {
-            override fun onResponse(call: Call<Quote>, response: Response<Quote>) {
-                if (response.code() == AppConstants.HTTP.SUCCESS) {
-                    response.body()?.let { listener.onSuccess(it) }
-                } else {
-                    listener.onFailure(getFailureMessage())
-                }
+    private val message = context.getString(R.string.UNEXPECTED_ERROR)
+
+    override suspend fun getRandomQuote(): Flow<Quote> = flow {
+        try {
+            val response = service.getRandomQuote()
+
+            if (response.isSuccessful) {
+                emit(response.body()!!)
             }
 
-            override fun onFailure(call: Call<Quote>, t: Throwable) {
-                listener.onFailure(getFailureMessage())
-            }
-        })
-    }
-
-    private fun getFailureMessage(): String {
-        return context.getString(R.string.UNEXPECTED_ERROR)
+        } catch (ex: HttpException) {
+            throw RemoteException(ex.message ?: message)
+        }
     }
 
 }

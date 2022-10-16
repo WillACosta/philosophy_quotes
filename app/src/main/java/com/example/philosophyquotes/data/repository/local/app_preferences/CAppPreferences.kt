@@ -16,7 +16,7 @@ class CAppPreferences(context: Context) : AppPreferences {
         }
     }
 
-    override fun <T> getData(key: String, default: T): T {
+    override fun <T> getData(key: String, default: T) : T {
         if (default is Boolean) {
             return preferences.getBoolean(key, default) as T
         } else if (default is String) {

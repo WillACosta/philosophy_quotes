@@ -11,10 +11,6 @@ class AppConstants private constructor() {
         const val BASE_URL = "https://stoicquotesapi.com/v1/api/quotes/"
     }
 
-    object HTTP {
-        const val SUCCESS = 200
-    }
-
     object DATA_SOURCE {
         const val TABLE_NAME = "QUOTE"
     }

@@ -1,139 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/primary"
-    android:padding="@dimen/base_screen_padding"
-    tools:context=".presentation.ContainerActivity">
 
-    <TextView
-        android:id="@+id/text_user_name"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.example.philosophyquotes.presentation.viewmodel.HomeViewModel" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/inter"
-        android:textSize="@dimen/font_size_xl"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.facebook.shimmer.ShimmerFrameLayout
-        android:id="@+id/shimmer_layout"
-        android:layout_width="@dimen/empty_margin"
         android:layout_height="match_parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:visibility="gone">
+        android:background="@color/primary"
+        android:padding="@dimen/base_screen_padding"
+        tools:context=".presentation.ContainerActivity">
 
-        <include
-            layout="@layout/quote_shimmer_body"
+        <TextView
+            android:id="@+id/text_user_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical" />
-
-    </com.facebook.shimmer.ShimmerFrameLayout>
-
-    <LinearLayout
-        android:id="@+id/home_content"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_user_name">
-
-        <ImageView
-            android:id="@+id/quote_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_xs"
-            android:contentDescription="@string/alt_quote_text"
-            android:src="@drawable/ic_quote"
-            app:layout_constraintBottom_toTopOf="@+id/quoteDescription"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintVertical_chainStyle="packed" />
-
-        <TextView
-            android:id="@+id/quoteDescription"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_xs"
             android:fontFamily="@font/inter"
-            android:text="@string/quote_description_sample"
+            android:text="@{viewmodel.userNameText}"
             android:textSize="@dimen/font_size_xl"
-            app:layout_constraintBottom_toTopOf="@+id/quoteAuthor"
+            android:visibility="@{viewmodel.userNameText.empty ? View.GONE : View.VISIBLE}"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/quote_icon"
-            app:layout_constraintVertical_chainStyle="spread" />
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/quoteAuthor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginTop="@dimen/margin_normal"
-            android:fontFamily="@font/inter"
-            android:text="@string/author_sample"
-            app:layout_constraintBottom_toTopOf="@+id/action_icons"
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmer_layout"
+            android:layout_width="@dimen/empty_margin"
+            android:layout_height="match_parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/quoteDescription"
-            app:layout_constraintVertical_chainStyle="packed" />
+            app:layout_constraintStart_toStartOf="parent"
+            tools:visibility="@{viewmodel.isLoading ? View.VISIBLE : View.GONE}">
+
+            <include
+                layout="@layout/quote_shimmer_body"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical" />
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
 
         <LinearLayout
-            android:id="@+id/action_icons"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginTop="@dimen/margin_xl"
-            app:layout_constraintBottom_toTopOf="@+id/refreshQuoteButton"
+            android:orientation="vertical"
+            android:visibility="@{viewmodel.isLoading ? View.GONE : View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/quoteAuthor">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_user_name">
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/button_favorite"
+            <ImageView
+                android:id="@+id/quote_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/primary"
-                android:contentDescription="@string/alt_heart_text"
-                android:src="@drawable/ic_heart"
-                app:borderWidth="@dimen/empty_margin"
-                app:elevation="@dimen/empty_margin"
-                app:fabSize="mini" />
+                android:layout_marginTop="@dimen/margin_xs"
+                android:contentDescription="@string/alt_quote_text"
+                android:src="@drawable/ic_quote"
+                app:layout_constraintBottom_toTopOf="@+id/quoteDescription"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/button_send"
+            <TextView
+                android:id="@+id/quoteDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/primary"
-                android:contentDescription="@string/alt_send_text"
-                android:src="@drawable/ic_send"
-                app:borderWidth="@dimen/empty_margin"
-                app:elevation="@dimen/empty_margin"
-                app:fabSize="mini" />
+                android:layout_marginTop="@dimen/margin_xs"
+                android:fontFamily="@font/inter"
+                android:textSize="@dimen/font_size_xl"
+                app:layout_constraintBottom_toTopOf="@+id/quoteAuthor"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/quote_icon"
+                app:layout_constraintVertical_chainStyle="spread" />
+
+            <TextView
+                android:id="@+id/quoteAuthor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:fontFamily="@font/inter"
+                app:layout_constraintBottom_toTopOf="@+id/action_icons"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/quoteDescription"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <LinearLayout
+                android:id="@+id/action_icons"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="@dimen/margin_xl"
+                app:layout_constraintBottom_toTopOf="@+id/refreshQuoteButton"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/quoteAuthor">
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/button_favorite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/primary"
+                    android:contentDescription="@string/alt_heart_text"
+                    android:src="@drawable/ic_heart"
+                    app:borderWidth="@dimen/empty_margin"
+                    app:elevation="@dimen/empty_margin"
+                    app:fabSize="mini" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/button_send"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/primary"
+                    android:contentDescription="@string/alt_send_text"
+                    android:src="@drawable/ic_send"
+                    app:borderWidth="@dimen/empty_margin"
+                    app:elevation="@dimen/empty_margin"
+                    app:fabSize="mini" />
+
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/refreshQuoteButton"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/margin_xxl"
+                android:fontFamily="@font/inter"
+                android:text="@string/refresh_button"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_size_xxs"
+                app:cornerRadius="@dimen/border_radius"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/action_icons"
+                app:strokeColor="@color/black" />
 
         </LinearLayout>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/refreshQuoteButton"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/margin_xxl"
-            android:fontFamily="@font/inter"
-            android:text="@string/refresh_button"
-            android:textColor="@color/black"
-            android:textSize="@dimen/font_size_xxs"
-            app:cornerRadius="@dimen/border_radius"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/action_icons"
-            app:strokeColor="@color/black" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

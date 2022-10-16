@@ -25,4 +25,10 @@ class Quote {
     @ColumnInfo
     @SerializedName("author")
     var author: String = ""
+
+    val authorName: String
+        get() = buildString {
+            append("- ")
+            append(author)
+        }
 }

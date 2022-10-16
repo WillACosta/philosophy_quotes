@@ -19,8 +19,10 @@ import com.example.philosophyquotes.presentation.viewmodel.MyQuotesViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MyQuotesFragment : Fragment() {
-    private var _binding: FragmentMyQuotesBinding? = null
-    private val binding get() = _binding!!
+    private val binding: FragmentMyQuotesBinding by lazy {
+        FragmentMyQuotesBinding.inflate(layoutInflater)
+    }
+
     private val quotesAdapter = MyQuotesAdapter()
 
     private val viewModel: MyQuotesViewModel by viewModel()
@@ -30,7 +32,6 @@ class MyQuotesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentMyQuotesBinding.inflate(inflater, container, false)
 
         setListeners()
         configureRecyclerView()
