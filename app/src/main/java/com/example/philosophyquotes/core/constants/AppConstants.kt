@@ -16,6 +16,6 @@ class AppConstants private constructor() {
     }
 
     object LOG {
-        const val OK_HTTP = "OK_HTTP"
+        const val API_RESPONSE = "API_RESPONSE"
     }
 }

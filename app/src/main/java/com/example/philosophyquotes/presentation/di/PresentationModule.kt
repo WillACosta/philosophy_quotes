@@ -1,9 +1,12 @@
 package com.example.philosophyquotes.presentation.di
 
+import com.example.philosophyquotes.presentation.fragments.HomeFragment
+import com.example.philosophyquotes.presentation.fragments.MyQuotesFragment
 import com.example.philosophyquotes.presentation.viewmodel.HomeViewModel
 import com.example.philosophyquotes.presentation.viewmodel.MyQuotesViewModel
 import com.example.philosophyquotes.presentation.viewmodel.NameViewModel
 import com.example.philosophyquotes.presentation.viewmodel.WelcomeViewModel
+import org.koin.androidx.fragment.dsl.fragment
 import org.koin.core.context.loadKoinModules
 import org.koin.core.module.Module
 import org.koin.dsl.module
@@ -12,7 +15,7 @@ import org.koin.dsl.module
 object PresentationModule {
 
     fun load() {
-        loadKoinModules(viewModelModule())
+        loadKoinModules(viewModelModule() + fragmentsModule())
     }
 
     private fun viewModelModule(): Module {
@@ -21,6 +24,13 @@ object PresentationModule {
             factory { HomeViewModel(get(), get()) }
             factory { NameViewModel(get()) }
             factory { MyQuotesViewModel(get()) }
+        }
+    }
+
+    private fun fragmentsModule(): Module {
+        return module {
+            fragment { HomeFragment() }
+            fragment { MyQuotesFragment() }
         }
     }
 

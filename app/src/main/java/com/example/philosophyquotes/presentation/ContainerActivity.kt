@@ -4,35 +4,36 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.philosophyquotes.R
 import com.example.philosophyquotes.databinding.ActivityContainerBinding
-
 import com.example.philosophyquotes.presentation.fragments.HomeFragment
 import com.example.philosophyquotes.presentation.fragments.MyQuotesFragment
+import org.koin.androidx.fragment.android.setupKoinFragmentFactory
 
 class ContainerActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityContainerBinding
 
-    private val homeFragment = HomeFragment()
-    private val myQuotesFragment = MyQuotesFragment()
+    private val binding: ActivityContainerBinding by lazy {
+        ActivityContainerBinding.inflate(layoutInflater)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         supportActionBar?.hide()
-        binding = ActivityContainerBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
+        setupKoinFragmentFactory()
         handleFragments()
+
+        setContentView(binding.root)
     }
 
     private fun handleFragments() {
-        supportFragmentManager.beginTransaction().replace(R.id.frame_container, homeFragment)
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.frame_container, HomeFragment::class.java, null)
             .commit()
 
         binding.bottomNavigation.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.home_menu_item -> {
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.frame_container, homeFragment)
+                        .replace(R.id.frame_container, HomeFragment::class.java, null)
                         .commit()
 
                     true
@@ -40,7 +41,7 @@ class ContainerActivity : AppCompatActivity() {
 
                 R.id.quotes_menu_item -> {
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.frame_container, myQuotesFragment)
+                        .replace(R.id.frame_container, MyQuotesFragment::class.java, null)
                         .commit()
 
                     true

@@ -92,7 +92,7 @@ object DataModule {
 
     private fun createHttpClient(): OkHttpClient {
         val interceptor = HttpLoggingInterceptor {
-            Log.e(AppConstants.LOG.OK_HTTP, it)
+            Log.i(AppConstants.LOG.API_RESPONSE, it)
         }
 
         interceptor.level = HttpLoggingInterceptor.Level.BODY
