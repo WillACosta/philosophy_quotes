@@ -1,7 +1,9 @@
 package com.example.philosophyquotes.data.di
 
 import android.util.Log
+import androidx.room.Room
 import com.example.philosophyquotes.core.constants.AppConstants
+import com.example.philosophyquotes.data.data_source.QuotesLocalDataSource
 import com.example.philosophyquotes.data.repository.local.app_preferences.AppPreferences
 import com.example.philosophyquotes.data.repository.local.app_preferences.CAppPreferences
 import com.example.philosophyquotes.data.repository.local.quotes_local_repository.CQuotesLocalRepository
@@ -23,7 +25,7 @@ object DataModule {
     fun load() {
         loadKoinModules(
             androidContextModule()
-                    + appPreferencesModule()
+                    + dataSourcesModule()
                     + repositoryModule()
                     + networkModule()
         )
@@ -35,9 +37,25 @@ object DataModule {
         }
     }
 
-    private fun appPreferencesModule(): Module {
+    private fun dataSourcesModule(): Module {
         return module {
             factory<AppPreferences> { CAppPreferences(get()) }
+
+            single {
+                Room.databaseBuilder(
+                    get(),
+                    QuotesLocalDataSource::class.java,
+                    AppConstants.DATA_SOURCE.TABLE_NAME
+                )
+                    .addMigrations()
+                    .allowMainThreadQueries()
+                    .build()
+            }
+
+            single {
+                val dataBase = get<QuotesLocalDataSource>()
+                dataBase.quotesDAO()
+            }
         }
     }
 
@@ -55,7 +73,7 @@ object DataModule {
             // create a instance for any JSON converter type | dependency inversion
             single { GsonConverterFactory.create() }
 
-            single { createHtppClient() }
+            single { createHttpClient() }
         }
     }
 
@@ -72,7 +90,7 @@ object DataModule {
             .create(T::class.java)
     }
 
-    private fun createHtppClient(): OkHttpClient {
+    private fun createHttpClient(): OkHttpClient {
         val interceptor = HttpLoggingInterceptor {
             Log.e(AppConstants.LOG.OK_HTTP, it)
         }
