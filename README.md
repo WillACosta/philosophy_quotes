@@ -7,18 +7,21 @@
 Philosophy Quotes is a mobile app to show random quotes every time the user touch on refresh button.
 In this project you'll find:
 
-- User Interface built with Constraint Layout
-- Clean - MVVM and SOLID concepts
+- UI/UX modern interface using Google Material Design components and Constraint Layout
+- Clean - MVVM architecture and SOLID concepts
 - User preferences data store with Shared Preferences
 - Save favorites quotes in local database with ROOM
 - Dependency Injection with Koin
+- Kotlin Coroutines and Flow
+- Flexible State class. The app uses a flexible UiState<T> wrapper class capable of handling
+  responses with type safety
 - HTTP Requests with Retrofit
 - JSON Serialization with Gson
-- Usage of [Stoic Quotes API](https://stoicquotesapi.com/)
+- API consumption of [Stoic Quotes API](https://stoicquotesapi.com/)
 - Shimmer loading effect
 - Custom fonts from Google Fonts
 - Share quote as a image preview
-- Bottom navigation view with fragments
+- Fragment-based navigation
 
 ### Opening the project
 
