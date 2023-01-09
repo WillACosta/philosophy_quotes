@@ -4,7 +4,7 @@
     <string name="welcome_title">Find quotes from ancient stoic philosophers.</string>
     <string name="welcome_description">Explore awesome quotes from the most brilliant minds of Stoic philosophy</string>
     <string name="get_started">Get Started</string>
-    <string name="name_question">What is your name?</string>
+    <string name="whats_your_name">What\'s your name?</string>
     <string name="your_name_field">Name</string>
     <string name="continue_button_text">Continue</string>
     <string name="alt_heart_text">Icon that representing an heart</string>
