@@ -41,7 +41,7 @@ use `Import Project`.
 
 <p align="center">
   <img src ="./docs/screen_shot.png">
-  <i> UI designed by me </i>
+  <i style="color: #757474; font-size: 10px"> UI designed by me </i>
 </p>
 
 ---
