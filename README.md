@@ -1,27 +1,30 @@
-<div align="center" border-radius="100px">
-  <img src="./docs/logo.png" />
-</div>
+<h1 align="center"> <img align="center" width ='80px' src="./docs/logo.png" alt="logo"> </h1>
 
-##
+<p align="center">
+  <a href="https://opensource.org/licenses/Apache-2.0"><img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg"/></a>
+  <a href="https://medium.com/@willAmaral/arquitetura-android-moderna-utilizando-single-activity-pattern-e38aa658a129"><img alt="Medium" src="https://skydoves.github.io/badges/Story-Medium.svg"/></a>
+  <a href="https://www.instagram.com/wiidev/"><img alt="Instagram Profile" src="https://badges.aleen42.com/src/instagram.svg"/></a> 
+</p>
 
 Philosophy Quotes is a mobile app to show random quotes every time the user touch on refresh button.
 In this project you'll find:
 
-- UI/UX modern interface using Google Material Design components and Constraint Layout
-- Clean - MVVM architecture and SOLID concepts
+- Single Activity Pattern
+- Fragment-based navigation
+- Kotlin Coroutines and Flow
+- Clean/MVVM architecture and SOLID concepts
+- Dependency Injection with Koin
 - User preferences data store with Shared Preferences
 - Save favorites quotes in local database with ROOM
-- Dependency Injection with Koin
-- Kotlin Coroutines and Flow
 - Flexible State class. The app uses a flexible UiState<T> wrapper class capable of handling
   responses with type safety
 - HTTP Requests with Retrofit
 - JSON Serialization with Gson
 - API consumption of [Stoic Quotes API](https://stoicquotesapi.com/)
+- UI/UX modern interface using Google Material Design components and Constraint Layout
 - Shimmer loading effect
 - Custom fonts from Google Fonts
 - Share quote as a image preview
-- Fragment-based navigation
 
 ### Opening the project
 
@@ -36,9 +39,10 @@ use `Import Project`.
 
 ### Screenshots
 
-<div style="margin: 0 auto">
-    <img src="./docs/screen_shot.png" />
-</div>
+<p align="center">
+  <img src ="./docs/screen_shot.png">
+  <i> UI designed by me </i>
+</p>
 
 ---
 

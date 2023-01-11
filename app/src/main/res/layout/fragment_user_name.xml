@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
     android:orientation="vertical"
-    android:padding="@dimen/base_screen_padding"
-    tools:context=".presentation.NameActivity">
+    android:padding="@dimen/base_screen_padding">
 
     <TextView
         android:layout_width="match_parent"
@@ -15,7 +13,7 @@
         android:layout_marginTop="@dimen/margin_xl"
         android:fontFamily="@font/inter"
         android:gravity="center_horizontal"
-        android:text="@string/name_question"
+        android:text="@string/whats_your_name"
         android:textColor="@color/white"
         android:textSize="@dimen/font_size_lg" />
 

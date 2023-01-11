@@ -18,6 +18,15 @@
         android:theme="@style/Theme.PhilosophyQuotes"
         tools:targetApi="31">
 
+        <activity
+            android:name=".presentation.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.philosophyquotes"
@@ -28,21 +37,6 @@
                 android:resource="@xml/filepaths" />
         </provider>
 
-        <activity
-            android:name=".presentation.WelcomeActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-        <activity
-            android:name=".presentation.NameActivity"
-            android:exported="false" />
-        <activity
-            android:name=".presentation.ContainerActivity"
-            android:exported="true" />
     </application>
 
 </manifest>
