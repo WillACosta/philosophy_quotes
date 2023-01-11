@@ -18,4 +18,6 @@
     <string name="your_quotes">Your quotes</string>
     <string name="no_quotes">No quotes</string>
     <string name="empty_quote_list_text">Save an quote and their appear here</string>
+    <string name="home">Home</string>
+    <string name="my_quotes">My Quotes</string>
 </resources>

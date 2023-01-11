@@ -43,8 +43,7 @@
 
         <argument
             android:name="showBottomNavigationBar"
-            android:defaultValue="true"
-            app:argType="boolean" />
+            android:defaultValue="true" />
     </fragment>
 
     <fragment
